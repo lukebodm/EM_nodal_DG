@@ -28,11 +28,15 @@ def JacobiGL(alpha, beta, N):
     return x
 
 def Warpfactor(N, rout):
-    # Compute LGL and equidistant node distribution
+    """
+    Compute scaled warp function at order N based on rout interpolation
+    """
+
+    # Compute LGL and equidistant node distribution (req)
     LGLr = JacobiGL(0, 0, N)
     req = np.linspace(-1, 1, N + 1)
 
-    # Compute V based on req
+    # Compute V based on req (to evaluate the polynomials at this set of points)
     Veq = Vandermonde1D(N, req)
 
     # Evaluate Lagrange polynomial at rout

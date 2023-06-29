@@ -9,25 +9,15 @@ def MaxwellRHS2D(Nfp, Nfaces, K, vmapM, vmapP, vmapB, mapB, Hx, Hy, Ez, nx, ny, 
 
     # Define field differences at faces
     dHx = np.zeros((Nfp*Nfaces*K))
-    #dHx = np.ravel(dHx, order='F')
     dHx = (np.ravel(Hx, order='F')[vmapM.astype(int)-1]-np.ravel(Hx, order='F')[vmapP.astype(int)-1])#.reshape(dHx.shape, order='F')
 
     dHy = np.zeros(Nfp*Nfaces*K)
-    #dHy = np.ravel(dHy, order='F')
     dHy = (np.ravel(Hy, order='F')[vmapM.astype(int)-1]-np.ravel(Hy, order='F')[vmapP.astype(int)-1])#.reshape(dHy.shape, order='F')
 
     dEz = np.zeros(Nfp*Nfaces*K)
-    #dEz = np.ravel(dEz, order='F')
     dEz = np.ravel(Ez, order='F')[vmapM.astype(int)-1]-np.ravel(Ez, order='F')[vmapP.astype(int)-1]#.reshape(dEz.shape, order='F')
 
-
-    #dEz = dEz.reshape((Nfp * Nfaces, K), order='F')
-
-
     # Impose reflective boundary conditions (Ez+ = -Ez-)
-    #dHx = np.ravel(dHx, order='F')
-    #dHy = np.ravel(dHy, order='F')
-    #dEz = np.ravel(dEz, order='F')
     Ez = np.ravel(Ez, order='F')
 
     dHx[mapB-1] = 0

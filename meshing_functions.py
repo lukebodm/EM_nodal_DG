@@ -1,6 +1,11 @@
 import numpy as np
 
 def MeshReaderGambit2D(FileName):
+    """
+    Read in basic grid information to build grid
+    NOTE: gambit(Fluent, Inc) *.neu format is assumed
+    """
+
     # Open the file
     with open(FileName, 'r') as Fid:
         # Read intro
@@ -37,12 +42,13 @@ def MeshReaderGambit2D(FileName):
             EToV[k][0] = int(tmpcon[3])
             EToV[k][1] = int(tmpcon[4])
             EToV[k][2] = int(tmpcon[5])
-        
+
+        # Return the results
         EToV = np.array(EToV)
         VX = np.array(VX)
         VY = np.array(VY)
 
-    # Return the results
+
     return Nv, VX, VY, K, EToV
 
 

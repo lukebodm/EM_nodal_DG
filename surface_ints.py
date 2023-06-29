@@ -2,12 +2,13 @@ import numpy as np
 from diff_matrices import Vandermonde1D
 
 def Lift2D(N, Np, Nfaces, Nfp, r, s, Fmask, V):
-    """function [LIFT] = Lift2D()
+    """
     Purpose  : Compute surface to volume lift term for DG formulation
     
     It allows the computation of the surface integral on the faces of the 
     element and the subsequent incorporation of that information into the 
-    overall solution within the element."""
+    overall solution within the element.
+    """
 
     Emat = np.zeros((int(Np), int(Nfaces*Nfp)))
 

@@ -4,7 +4,7 @@ from MaxwellRHS2D import MaxwellRHS2D
 from dtscale import dtscale2D
 from JacobiGQ import JacobiGQ
 import matplotlib
-matplotlib.use('Agg')
+#matplotlib.use('Agg')
 
 
 def Maxwell2D(NODETOL, N, Np, Nfp, Nfaces, vmapM, vmapP, vmapB, mapB, K, x, y, r, s, nx, ny, Hx, Hy, Ez, FinalTime, Dr, Ds, rx, ry, sx, sy, LIFT, Fscale):
@@ -68,13 +68,14 @@ def Maxwell2D(NODETOL, N, Np, Nfp, Nfaces, vmapM, vmapP, vmapB, mapB, K, x, y, r
 
         fig = plt.figure()
         ax = fig.add_subplot(projection='3d')
-        ax.scatter(x, y, Hx)
+        ax.scatter(x, y, Hy, '.')
         ax.set_xlim(-1, 1)
         ax.set_ylim(-1, 1)
         ax.set_zlim(-1, 1)
         file_name = 'images/' + str(i).zfill(4) + '.png'
-        plt.savefig(file_name, dpi=1200)
+        plt.savefig(file_name, dpi=600)
+        #plt.show()
         plt.close()
-
+        #breakpoint()
         i += 1
     return Hx, Hy, Ez, time

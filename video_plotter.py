@@ -8,7 +8,7 @@ directory = 'images/'
 file_names = sorted(os.listdir(directory))
 
 # Initialize the video writer
-output_file = 'Hx_video.mp4'
+output_file = 'Hy_video.mp4'
 writer = imageio.get_writer(output_file, fps=30)  # Adjust the frame rate (fps) as needed
 
 # Loop through the file names and add frames to the video
